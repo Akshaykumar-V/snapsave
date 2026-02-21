@@ -4,9 +4,9 @@ export async function parsePDF(file) {
     // Dynamically import pdfjs-dist to avoid SSR issues
     const pdfjsLib = await import('pdfjs-dist')
     
-    // Set worker source
+    // Set worker source (pdfjs-dist v4+ uses .mjs extension)
     pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
-      'pdfjs-dist/build/pdf.worker.min.js',
+      'pdfjs-dist/build/pdf.worker.min.mjs',
       import.meta.url,
     ).toString()
     

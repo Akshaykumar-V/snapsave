@@ -3,7 +3,13 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
+  build: {
+    target: 'es2022',
+  },
   optimizeDeps: {
-    include: ['pdfjs-dist']
-  }
+    include: ['pdfjs-dist'],
+    esbuildOptions: {
+      target: 'es2022',
+    },
+  },
 })
