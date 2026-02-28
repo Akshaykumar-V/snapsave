@@ -50,25 +50,28 @@ function SpendingPieChart({ data }) {
   
   return (
     <div>
-      <ResponsiveContainer width="100%" height={280}>
+      <ResponsiveContainer width="100%" height={240}>
         <PieChart>
           <Pie
             data={data}
             cx="50%"
             cy="50%"
-            outerRadius={120}
+            outerRadius={90}
+            innerRadius={40}
             dataKey="value"
             labelLine={false}
             label={renderCustomLabel}
+            stroke="#fff"
+            strokeWidth={2}
           >
             {data.map((entry, index) => (
               <Cell key={index} fill={entry.color} />
             ))}
           </Pie>
           <Tooltip content={<CustomTooltip />} />
-          <Legend content={renderLegend} />
         </PieChart>
       </ResponsiveContainer>
+      {renderLegend({ payload: data.map(d => ({ value: d.name, color: d.color, payload: d })) })}
     </div>
   )
 }

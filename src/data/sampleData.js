@@ -76,4 +76,13 @@ export const CATEGORY_COLORS = {
   'Recharge & Bills': '#6C5CE7',
   'Transfers': '#74B9FF',
   'Other': '#B2BEC3',
+  // lowercase keys (from backend categorization)
+  'food': '#FF6B6B',
+  'transport': '#4ECDC4',
+  'shopping': '#FFE66D',
+  'entertainment': '#A8E6CF',
+  'health': '#FF8B94',
+  'recharge': '#6C5CE7',
+  'transfers': '#74B9FF',
+  'other': '#B2BEC3',
 }

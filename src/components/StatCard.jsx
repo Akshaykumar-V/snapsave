@@ -4,24 +4,25 @@ function StatCard({ icon, label, amount, change, changeType = 'neutral' }) {
     negative: 'text-error',
     neutral: 'text-neutral',
   }
-  
-  const changeArrows = {
-    positive: '↑',
-    negative: '↑',
-    neutral: '→',
+  const changeBg = {
+    positive: 'bg-green-50',
+    negative: 'bg-red-50',
+    neutral: 'bg-gray-50',
   }
   
   return (
-    <div className="bg-white rounded-md p-6 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+    <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-md hover:-translate-y-1 group">
       <div className="flex items-start justify-between mb-3">
-        <span className="text-3xl">{icon}</span>
+        <div className="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300">
+          {icon}
+        </div>
       </div>
-      <p className="text-caption uppercase tracking-wider text-neutral font-medium mb-1">{label}</p>
-      <p className="font-mono text-3xl font-bold text-primary-dark mb-2">{amount}</p>
+      <p className="text-caption uppercase tracking-widest text-neutral font-semibold mb-1.5">{label}</p>
+      <p className="font-mono text-2xl md:text-3xl font-bold text-gray-900 mb-2 tracking-tight">{amount}</p>
       {change && (
-        <p className={`text-small font-medium ${changeColors[changeType]}`}>
-          {changeType !== 'neutral' && changeArrows[changeType]} {change}
-        </p>
+        <div className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold ${changeColors[changeType]} ${changeBg[changeType]}`}>
+          {changeType === 'positive' && '↑'}{changeType === 'negative' && '↓'}{changeType === 'neutral' && '→'} {change}
+        </div>
       )}
     </div>
   )
